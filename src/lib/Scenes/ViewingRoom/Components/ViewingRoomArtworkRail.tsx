@@ -4,9 +4,11 @@ import { AboveTheFoldFlatList } from "lib/Components/AboveTheFoldFlatList"
 import OpaqueImageView from "lib/Components/OpaqueImageView/OpaqueImageView"
 import { SectionTitle } from "lib/Components/SectionTitle"
 import SwitchBoard from "lib/NativeModules/SwitchBoard"
+import { Schema } from "lib/utils/track"
 import React, { useRef } from "react"
 import { View } from "react-native"
 import { createFragmentContainer, graphql } from "react-relay"
+import { useTracking } from "react-tracking"
 import styled from "styled-components/native"
 
 interface ViewingRoomArtworkRailProps {
@@ -17,9 +19,9 @@ const ArtworkCard = styled.TouchableHighlight`
   border-radius: 2px;
   overflow: hidden;
 `
-
 export const ViewingRoomArtworkRail: React.FC<ViewingRoomArtworkRailProps> = props => {
   const artworks = props.viewingRoomArtworks.artworks.edges
+  const tracking = useTracking()
   const navRef = useRef()
   return (
     <View ref={navRef}>
@@ -42,7 +44,16 @@ export const ViewingRoomArtworkRail: React.FC<ViewingRoomArtworkRailProps> = pro
           initialNumToRender={4}
           windowSize={3}
           renderItem={({ item }) => (
-            <ArtworkCard onPress={() => SwitchBoard.presentNavigationViewController(navRef.current, item.node.href)}>
+            <ArtworkCard
+              onPress={() => {
+                tracking.trackEvent({
+                  action_name: Schema.ActionNames.ArtworkRail,
+                  context_screen: Schema.PageNames.ViewingRoom,
+                  context_screen_owner_type: Schema.OwnerEntityTypes.ViewingRoom,
+                })
+                SwitchBoard.presentNavigationViewController(navRef.current, item.node.href)
+              }}
+            >
               <OpaqueImageView imageURL={item.node.image.url} width={100} height={100} />
             </ArtworkCard>
           )}
