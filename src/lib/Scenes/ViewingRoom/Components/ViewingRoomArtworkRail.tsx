@@ -20,12 +20,15 @@ const ArtworkCard = styled.TouchableHighlight`
 
 export const ViewingRoomArtworkRail: React.FC<ViewingRoomArtworkRailProps> = props => {
   const artworks = props.viewingRoomArtworks.artworks.edges
+  const totalCount = props.viewingRoomArtworks.artworks.totalCount
   const navRef = useRef()
+  const pluralizedArtworksCount = totalCount === 1 ? "artwork" : "artworks"
+
   return (
     <View ref={navRef}>
       <Flex>
         <SectionTitle
-          title={`${props.viewingRoomArtworks.artworks.totalCount} artworks`}
+          title={`${totalCount} ${pluralizedArtworksCount}`}
           onPress={() =>
             SwitchBoard.presentNavigationViewController(
               navRef.current,
