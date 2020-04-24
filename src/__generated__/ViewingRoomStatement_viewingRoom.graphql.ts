@@ -10,7 +10,7 @@ export type ViewingRoomStatement_viewingRoom = {
     readonly artworksForCount: {
         readonly totalCount: number | null;
     } | null;
-    readonly " $fragmentRefs": FragmentRefs<"ViewingRoomSubsections_viewingRoomSubsections" | "ViewingRoomArtworkRail_viewingRoomArtworks">;
+    readonly " $fragmentRefs": FragmentRefs<"ViewingRoomSubsections_viewingRoom" | "ViewingRoomArtworkRail_viewingRoomArtworks">;
     readonly " $refType": "ViewingRoomStatement_viewingRoom";
 };
 export type ViewingRoomStatement_viewingRoom$data = ViewingRoomStatement_viewingRoom;
@@ -75,7 +75,7 @@ const node: ReaderFragment = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "ViewingRoomSubsections_viewingRoomSubsections",
+      "name": "ViewingRoomSubsections_viewingRoom",
       "args": null
     },
     {
@@ -85,5 +85,5 @@ const node: ReaderFragment = {
     }
   ]
 };
-(node as any).hash = '93a18259c8af8251e84e27c52fee4c44';
+(node as any).hash = '31a37d23a4fe11900c9a30ea77c16ce4';
 export default node;

@@ -1,6 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 107a49d11750ee895b907224369fe26e */
+/* @relayHash f9c843f1f87648e22c4387d740c1e0f2 */
 
 import { ConcreteRequest } from "relay-runtime";
 import { FragmentRefs } from "relay-runtime";
@@ -48,11 +48,11 @@ fragment ViewingRoomStatement_viewingRoom on ViewingRoom {
   artworksForCount: artworksConnection(first: 1) {
     totalCount
   }
-  ...ViewingRoomSubsections_viewingRoomSubsections
+  ...ViewingRoomSubsections_viewingRoom
   ...ViewingRoomArtworkRail_viewingRoomArtworks
 }
 
-fragment ViewingRoomSubsections_viewingRoomSubsections on ViewingRoom {
+fragment ViewingRoomSubsections_viewingRoom on ViewingRoom {
   subsections {
     body
     title
@@ -290,7 +290,7 @@ return {
   "params": {
     "operationKind": "query",
     "name": "ViewingRoomStatementTestsQuery",
-    "id": "076cde295972afd1003ebd3f6d8ddc61",
+    "id": "9380e14a28f21166685dc8f2c436ab26",
     "text": null,
     "metadata": {}
   }

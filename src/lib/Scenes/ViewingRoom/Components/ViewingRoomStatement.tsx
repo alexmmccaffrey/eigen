@@ -57,7 +57,7 @@ export const ViewingRoomStatement: React.FC<ViewingRoomStatementProps> = props =
 
   sections.push({
     key: "subsections",
-    element: <ViewingRoomSubsectionsContainer viewingRoomSubsections={viewingRoom} />,
+    element: <ViewingRoomSubsectionsContainer viewingRoom={viewingRoom} />,
     excludePadding: false,
   })
 
@@ -104,7 +104,7 @@ export const ViewingRoomStatementContainer = createFragmentContainer(ViewingRoom
       artworksForCount: artworksConnection(first: 1) {
         totalCount
       }
-      ...ViewingRoomSubsections_viewingRoomSubsections
+      ...ViewingRoomSubsections_viewingRoom
       ...ViewingRoomArtworkRail_viewingRoomArtworks
     }
   `,
